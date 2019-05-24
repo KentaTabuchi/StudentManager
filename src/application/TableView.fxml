@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.TableViewController">
+   <center>
+      <TableView prefHeight="200.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="名前" />
+            <TableColumn prefWidth="75.0" text="住所" />
+            <TableColumn prefWidth="75.0" text="電話番号" />
+            <TableColumn prefWidth="75.0" text="卒業年度" />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <Label text="生徒情報" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
