@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.TableViewController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TableViewController">
    <center>
-      <TableView prefHeight="200.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="75.0" text="名前" />
-            <TableColumn prefWidth="75.0" text="住所" />
-            <TableColumn prefWidth="75.0" text="電話番号" />
-            <TableColumn prefWidth="75.0" text="卒業年度" />
+          <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="名前" />
+            <TableColumn fx:id="addressColumn" prefWidth="200.0" text="住所" />
+            <TableColumn fx:id="phoneColumn" prefWidth="130.0" text="電話番号" />
+            <TableColumn fx:id="emailColumn" prefWidth="200.0" text="メール" />
+            <TableColumn fx:id="graduationColumn" prefWidth="75.0" text="卒業年度" />
         </columns>
       </TableView>
    </center>

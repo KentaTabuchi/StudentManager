@@ -18,8 +18,13 @@ public class Student {
 	/**
 	 * 
 	 */
-	public Student() {
-
+	public Student(int id,String name,String email,String address,String phone,String graduation) {
+		this.id.set(id);
+		this.name.set(name);
+		this.email.set(email);
+		this.address.set(address);
+		this.phone.set(phone);
+		this.graduation.set(graduation);
 	}
 	public int getId(){
 		return id.get();
