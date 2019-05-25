@@ -44,7 +44,7 @@ public class TableViewController implements Initializable{
     	students = cvsReader.readFromCvs("student.csv");
 	}
     private void printAllStudents() {
-
+    	clearTableView();
     	students.forEach(student->{
     		ObservableList<Student> data = tableView.getItems();
     		data.add(student);
@@ -56,9 +56,15 @@ public class TableViewController implements Initializable{
     private void printMatchedStudents() {
 
     	matchedStudents.forEach(matchedStudents->{
+    		clearTableView();
     		ObservableList<Student> data = tableView.getItems();
     		data.add(matchedStudents);
     	});
+    }
+    private void clearTableView(){
+		for ( int i = 0; i<tableView.getItems().size(); i++) {
+			tableView.getItems().clear();
+		}
     }
 	/**
 	 * This method make RelationShip between TableColumn and Student instance (that is DataModel Entity). 
@@ -78,10 +84,18 @@ public class TableViewController implements Initializable{
 	 * When find button clicked,Table searches matching data by id or name. 
 	 */
 	@FXML protected void onFindButtonClick(){
-		System.out.println("onFindButtonClick Start");
+		System.out.println("onFindButtonClick event invoked");
 		int id = Integer.valueOf(idText.getText());
 		String name = nameText.getText(); 
 		this.matchedStudents = this.students.stream().filter(student -> student.getId() == id).collect(Collectors.toList());
 		printMatchedStudents();
+	}
+	/**
+	 * This is the button click event.
+	 * When all print button clicked,Table prints all records. 
+	 */
+	@FXML protected void onAllPrintButtonClick(){
+		System.out.println("onAllPrintButtonClick event invoked");
+		printAllStudents();
 	}
 }
