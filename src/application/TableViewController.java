@@ -86,19 +86,39 @@ public class TableViewController implements Initializable{
 	 * This is the button click event.
 	 * When find button clicked,Table searches matching data by id or name. 
 	 */
+	/**
+	 * 
+	 */
 	@FXML protected void onFindButtonClick(){
 		System.out.println("onFindButtonClick event invoked");
 		try{
 			int id = Integer.valueOf(idText.getText());
-			String name = nameText.getText();
+			
 			if(!(idText.getText().isEmpty())){
 				this.matchedStudents = this.students.stream().filter(student -> student.getId() == id).collect(Collectors.toList());
 				printMatchedStudents();
 			}
 		}catch(Exception e){
-	        Alert alert = new Alert( AlertType.NONE , "該当の生徒は見つかりませんでした。" , ButtonType.OK);
-	        alert.show();
-		}	
+			if(nameText.getText().isEmpty()){ //When nameTextField filled text,it does'nt need showing error message.
+		        Alert alert = new Alert( AlertType.NONE , "該当の生徒は見つかりませんでした。" , ButtonType.OK);
+		        alert.show();
+		        e.printStackTrace();
+	        }
+		}
+		String name = nameText.getText();
+		try{
+			if(!(nameText.getText().isEmpty())){
+				this.matchedStudents = this.students.stream().filter(student -> student.getName().equals(name)).collect(Collectors.toList());
+				printMatchedStudents();
+			}
+		}catch(Exception e){
+			if(idText.getText().isEmpty()){ //When idTextField filled text,it does'nt need showing error message.
+		        Alert alert = new Alert( AlertType.NONE , "該当の生徒は見つかりませんでした。" , ButtonType.OK);
+		        alert.show();
+		        e.printStackTrace();
+	        }
+		}
+	
 			
 	}
 	
