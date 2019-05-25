@@ -19,6 +19,6 @@
       </TableView>
    </center>
    <top>
-      <Label text="生徒情報" BorderPane.alignment="CENTER" />
+      <Label styleClass="title-label" text="生徒情報" BorderPane.alignment="TOP_LEFT" />
    </top>
 </BorderPane>

@@ -1,0 +1,17 @@
+.root {
+     -fx-background-color:#483D8B;
+}
+
+.label{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+
+.title-label{
+   -fx-font-size: 35px;
+   -fx-text-fill: #FFFFEE;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
