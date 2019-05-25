@@ -2,7 +2,9 @@ package application;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,30 +24,41 @@ public class TableViewController implements Initializable{
     @FXML private TableColumn<Student,String> graduationColumn;
 
     @FXML private TextField idText;
-
     @FXML private TextField nameText;
     
+    private List<Student> students;
+    private List<Student> matchedStudents; //this variable used for filtering students;
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		
 		setCellValueFactoryes();
-		addPerson();
+		loadFromCsv();
+		printAllStudents();
 	}
     
     /**
      * This method adds record to TableView.
      */
-
-    protected void addPerson() {
-
-    	CsvReader cvsReader = new CsvReader();
-    	ArrayList<Student> students = cvsReader.readFromCvs("student.csv");
+	private void loadFromCsv(){
+		CsvReader cvsReader = new CsvReader();
+    	students = cvsReader.readFromCvs("student.csv");
+	}
+    private void printAllStudents() {
 
     	students.forEach(student->{
     		ObservableList<Student> data = tableView.getItems();
     		data.add(student);
     	});
+    }
+    /**
+     * This method print record of matched with find by user to tableView.
+     */
+    private void printMatchedStudents() {
 
+    	matchedStudents.forEach(matchedStudents->{
+    		ObservableList<Student> data = tableView.getItems();
+    		data.add(matchedStudents);
+    	});
     }
 	/**
 	 * This method make RelationShip between TableColumn and Student instance (that is DataModel Entity). 
@@ -66,7 +79,9 @@ public class TableViewController implements Initializable{
 	 */
 	@FXML protected void onFindButtonClick(){
 		System.out.println("onFindButtonClick Start");
-		String id = idText.getText();
-		String name = nameText.getText();
+		int id = Integer.valueOf(idText.getText());
+		String name = nameText.getText(); 
+		this.matchedStudents = this.students.stream().filter(student -> student.getId() == id).collect(Collectors.toList());
+		printMatchedStudents();
 	}
 }
