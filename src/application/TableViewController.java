@@ -91,35 +91,30 @@ public class TableViewController implements Initializable{
 	 */
 	@FXML protected void onFindButtonClick(){
 		System.out.println("onFindButtonClick event invoked");
-		try{
-			int id = Integer.valueOf(idText.getText());
-			
-			if(!(idText.getText().isEmpty())){
-				this.matchedStudents = this.students.stream().filter(student -> student.getId() == id).collect(Collectors.toList());
-				printMatchedStudents();
-			}
-		}catch(Exception e){
-			if(nameText.getText().isEmpty()){ //When nameTextField filled text,it does'nt need showing error message.
-		        Alert alert = new Alert( AlertType.NONE , "該当の生徒は見つかりませんでした。" , ButtonType.OK);
-		        alert.show();
-		        e.printStackTrace();
-	        }
+		if(!(idText.getText().isEmpty()) && !(nameText.getText().isEmpty())){
+			Alert alert = new Alert( AlertType.NONE , "名前かIDのどちらか片方を入力してください。" , ButtonType.OK);
+	        alert.show();
 		}
-		String name = nameText.getText();
-		try{
-			if(!(nameText.getText().isEmpty())){
-				this.matchedStudents = this.students.stream().filter(student -> student.getName().equals(name)).collect(Collectors.toList());
-				printMatchedStudents();
-			}
-		}catch(Exception e){
-			if(idText.getText().isEmpty()){ //When idTextField filled text,it does'nt need showing error message.
-		        Alert alert = new Alert( AlertType.NONE , "該当の生徒は見つかりませんでした。" , ButtonType.OK);
-		        alert.show();
-		        e.printStackTrace();
-	        }
+		else if((idText.getText().isEmpty() && nameText.getText().isEmpty())){
+			Alert alert = new Alert( AlertType.NONE , "名前かIDを入力してください。" , ButtonType.OK);
+	        alert.show();
 		}
-	
+		else{
+			try{
+				int id = Integer.valueOf(idText.getText());
+				if(!(idText.getText().isEmpty())){
+					this.matchedStudents = this.students.stream().filter(student -> student.getId() == id) .collect(Collectors.toList());
+					printMatchedStudents();
+				}			
+			}catch(NumberFormatException e){
+				//I think that only this pattern,there is no problem ignore exception.
+				//so I deleted e.printStackTrace here. 
+			}
 			
+				String name = nameText.getText();
+				this.matchedStudents = this.students.stream().filter(student -> student.getName().equals(name)) .collect(Collectors.toList());
+				printMatchedStudents();
+			} 
 	}
 	
 	/**
