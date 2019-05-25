@@ -30,7 +30,7 @@
                         <Insets left="5.0" top="10.0" />
                      </FlowPane.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="idText">
                      <FlowPane.margin>
                         <Insets left="5.0" top="10.0" />
                      </FlowPane.margin>
@@ -40,7 +40,7 @@
                         <Insets left="5.0" top="10.0" />
                      </FlowPane.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="nameText">
                      <FlowPane.margin>
                         <Insets left="5.0" top="10.0" />
                      </FlowPane.margin>

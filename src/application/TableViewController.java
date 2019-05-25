@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class TableViewController implements Initializable{
@@ -20,7 +21,9 @@ public class TableViewController implements Initializable{
     @FXML private TableColumn<Student,String> addressColumn;
     @FXML private TableColumn<Student,String> phoneColumn;
     @FXML private TableColumn<Student,String> graduationColumn;
-
+    @FXML private TextField idText;
+    @FXML private TextField nameText;
+    
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		
