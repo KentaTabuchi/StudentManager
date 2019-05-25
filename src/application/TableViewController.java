@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -85,11 +88,20 @@ public class TableViewController implements Initializable{
 	 */
 	@FXML protected void onFindButtonClick(){
 		System.out.println("onFindButtonClick event invoked");
-		int id = Integer.valueOf(idText.getText());
-		String name = nameText.getText(); 
-		this.matchedStudents = this.students.stream().filter(student -> student.getId() == id).collect(Collectors.toList());
-		printMatchedStudents();
+		try{
+			int id = Integer.valueOf(idText.getText());
+			String name = nameText.getText();
+			if(!(idText.getText().isEmpty())){
+				this.matchedStudents = this.students.stream().filter(student -> student.getId() == id).collect(Collectors.toList());
+				printMatchedStudents();
+			}
+		}catch(Exception e){
+	        Alert alert = new Alert( AlertType.NONE , "該当の生徒は見つかりませんでした。" , ButtonType.OK);
+	        alert.show();
+		}	
+			
 	}
+	
 	/**
 	 * This is the button click event.
 	 * When all print button clicked,Table prints all records. 
