@@ -1,11 +1,11 @@
 package application;
 
+import java.awt.TextField;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -20,7 +20,9 @@ public class TableViewController implements Initializable{
     @FXML private TableColumn<Student,String> addressColumn;
     @FXML private TableColumn<Student,String> phoneColumn;
     @FXML private TableColumn<Student,String> graduationColumn;
-
+    @FXML private TextField idText;  
+    @FXML private TextField nameText;
+    
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		
@@ -31,7 +33,7 @@ public class TableViewController implements Initializable{
     /**
      * This method adds record to TableView.
      */
-    @FXML
+
     protected void addPerson() {
 
     	CsvReader cvsReader = new CsvReader();
@@ -54,6 +56,15 @@ public class TableViewController implements Initializable{
 		addressColumn.setCellValueFactory(new PropertyValueFactory<Student,String>("address"));
 		phoneColumn.setCellValueFactory(new PropertyValueFactory<Student,String>("phone"));
 		graduationColumn.setCellValueFactory(new PropertyValueFactory<Student,String>("graduation"));
+	}
 	
+	/**
+	 * This is the button click event.
+	 * When find button clicked,Table searches matching data by id or name. 
+	 */
+	@FXML protected void onFindButtonClick(){
+		System.out.println("onFindButtonClick Start");
+		String id = idText.getText();
+		String name = nameText.getText();
 	}
 }
