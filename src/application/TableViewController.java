@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
@@ -32,26 +33,14 @@ public class TableViewController implements Initializable{
      */
     @FXML
     protected void addPerson() {
-    	
-    	int id;
-    	String name;
-    	String email;
-    	String address;
-    	String phone;
-    	String graduation;
-    	
-    	//his block is test code.
-    	id=5;
-    	name="taro";
-    	email="taro.google.com";
-    	address="大阪府中央区本町";
-    	phone="090-1234-9876";
-    	graduation="2013";
-    	//End Test
-    	
-    	Student student = new Student(id,name,email,address,phone,graduation);
-        ObservableList<Student> data = tableView.getItems();
-        data.add(student);
+
+    	CsvReader cvsReader = new CsvReader();
+    	ArrayList<Student> students = cvsReader.readFromCvs("student.csv");
+
+    	students.forEach(student->{
+    		ObservableList<Student> data = tableView.getItems();
+    		data.add(student);
+    	});
 
     }
 	/**
