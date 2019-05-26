@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -22,12 +25,13 @@ public class CsvReader {
 	public CsvReader() {
 		
 	}
-	public ArrayList<Student> readFromCvs(String url){
+	public ArrayList<Student> readFromCvs(URL url){
 		ArrayList<Student> students = new ArrayList<Student>();
-		File file = new File(url);
+		URI uri = null;
 		try {
-			String path = System.getProperty("user.dir");
-			BufferedReader br = new BufferedReader(new FileReader(path +"/csv/"+file));
+			uri = url.toURI();
+			File file = new File(uri);
+			BufferedReader br = new BufferedReader(new FileReader(file));
 			
 			String line;
 			while((line = br.readLine()) !=null){
@@ -47,9 +51,11 @@ public class CsvReader {
 		    	graduation 	= item[5];
 				Student student = new Student(id,name,email,address,phone,graduation);
 				students.add(student);
-			}
-			br.close();
-			
+			}br.close();
+		} catch (URISyntaxException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+	
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
@@ -64,3 +70,13 @@ public class CsvReader {
 	
 
 }
+/**
+Image im=null;
+URL url=this.getClass().getResource("img/sample.png");
+try {
+	im=this.createImage((ImageProducer) url.getContent());
+}catch(Exception ex){
+	// System.out.println("Resource Error!");
+	im=null;
+}
+*/

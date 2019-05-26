@@ -44,7 +44,9 @@ public class TableViewController implements Initializable{
      */
 	private void loadFromCsv(){
 		CsvReader cvsReader = new CsvReader();
-    	students = cvsReader.readFromCvs("student.csv");
+		URL url = this.getClass().getResource("csv/student.csv");
+		System.out.println(url.toString());
+    	students = cvsReader.readFromCvs(url);
 	}
     private void printAllStudents() {
     	clearTableView();
