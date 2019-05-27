@@ -1,0 +1,22 @@
+.root {
+    -fx-background-image: url("/background.jpg");
+}
+
+.label{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+
+.title-label{
+   -fx-font-size: 35px;
+   -fx-text-fill:burlywood;
+   -fx-effect:dropshadow(gaussian , rgba(0,0,0,0.5) , 2,2,2,1);
+}
+
+.find-label{
+	-fx-font-size: 15px;
+	-fx-text-fill:chocolate ;
+	-fx-font-weight:bold;
+}
