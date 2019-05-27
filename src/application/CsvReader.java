@@ -27,7 +27,7 @@ public class CsvReader {
 		File file = new File(url);
 		try {
 			String path = System.getProperty("user.dir");
-			BufferedReader br = new BufferedReader(new FileReader(path +"/csv/"+file));
+			BufferedReader br = new BufferedReader(new FileReader(path +"/src/application/csv/"+file));
 			
 			String line;
 			while((line = br.readLine()) !=null){
