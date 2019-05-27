@@ -1,7 +1,6 @@
 package application;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -44,7 +43,7 @@ public class TableViewController implements Initializable{
      */
 	private void loadFromCsv(){
 		CsvReader cvsReader = new CsvReader();
-    	students = cvsReader.readFromCvs("student.csv");
+    	students = cvsReader.readFromCvs();
 	}
     private void printAllStudents() {
     	clearTableView();
