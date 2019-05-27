@@ -4,10 +4,9 @@
 package application;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -22,12 +21,11 @@ public class CsvReader {
 	public CsvReader() {
 		
 	}
-	public ArrayList<Student> readFromCvs(String url){
+	public ArrayList<Student> readFromCvs(String fileName){
 		ArrayList<Student> students = new ArrayList<Student>();
-		File file = new File(url);
 		try {
-			String path = System.getProperty("user.dir");
-			BufferedReader br = new BufferedReader(new FileReader(path +"/src/application/csv/"+file));
+			InputStreamReader in = new InputStreamReader(this.getClass().getResourceAsStream(fileName),"UTF-8");
+			BufferedReader br = new BufferedReader(in);
 			
 			String line;
 			while((line = br.readLine()) !=null){

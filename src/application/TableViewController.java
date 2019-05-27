@@ -43,7 +43,7 @@ public class TableViewController implements Initializable{
      */
 	private void loadFromCsv(){
 		CsvReader cvsReader = new CsvReader();
-    	students = cvsReader.readFromCvs("student.csv");
+    	students = cvsReader.readFromCvs("/student.csv");
 	}
     private void printAllStudents() {
     	clearTableView();
